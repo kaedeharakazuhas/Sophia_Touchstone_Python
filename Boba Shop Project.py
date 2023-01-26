@@ -28,7 +28,8 @@ def display_menu():
 def boba_menu():
     customer_order = []
     prices = []
-    while True:
+    still_a_customer = True
+    while still_a_customer:
         display_menu()
         my_first_drink = input("Please select a drink from the menu using a number or press 0 to cancel/quit: ")
         try:
@@ -41,7 +42,14 @@ def boba_menu():
             print("Classic Milk Tea will be $3 for 16oz. ")
             customer_order.append("Classic Milk Tea (16oz)")
             prices.append("$3.00")
-            break
+            continue_order = input("Would you like to order something else? Please Enter 'Yes' or 'No'. ")
+            if continue_order == "Yes":
+                still_a_customer = True
+            elif continue_order == "No":
+                still_a_customer = False
+            else:
+                print("Please enter 'Yes' or 'No' only.")
+                still_a_customer = True
         elif customer_answer == 2:
             print("Classic Milk Tea will be $4 for 24oz. ")
         elif customer_answer == 3:
