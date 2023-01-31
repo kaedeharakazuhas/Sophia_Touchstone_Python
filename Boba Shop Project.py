@@ -28,7 +28,7 @@ def display_menu():
 def boba_ordering():
     customer_order = []
     prices = []
-    customer_total = float(0)
+    customer_subtotal = 0.00
     still_a_customer = True
     while still_a_customer:
         display_menu()
@@ -66,6 +66,48 @@ def boba_ordering():
             else:
                 print("Please enter 'Yes' or 'No' only.")
                 still_a_customer = True
+        elif customer_answer == 3:
+            print("")
+            print("Passion Fruit Green Tea (16oz) will be $5.00 for 16oz. ")
+            customer_order.append("Passion Fruit Green Tea (16oz)")
+            price = float(input("Please enter the price of the item: "))
+            prices.append(price)
+            continue_order = input("Would you like to order something else? Please Enter 'Yes' or 'No'. ")
+            if continue_order.capitalize() == "Yes":
+                still_a_customer = True
+            elif continue_order.capitalize() == "No":
+                still_a_customer = False
+            else:
+                print("Please enter 'Yes' or 'No' only.")
+                still_a_customer = True
+        elif customer_answer == 4:
+            print("")
+            print("Passion Fruit Green Tea (24oz) will be $6.00 for 24oz. ")
+            customer_order.append("Passion Fruit Green Tea (24oz)")
+            price = float(input("Please enter the price of the item: "))
+            prices.append(price)
+            continue_order = input("Would you like to order something else? Please Enter 'Yes' or 'No'. ")
+            if continue_order.capitalize() == "Yes":
+                still_a_customer = True
+            elif continue_order.capitalize() == "No":
+                still_a_customer = False
+            else:
+                print("Please enter 'Yes' or 'No' only.")
+                still_a_customer = True
+        elif customer_answer == 5:
+            print("")
+            print("Mango Smoothie will be $7.00 for 24oz. ")
+            customer_order.append("Mango Smoothie (24oz)")
+            price = float(input("Please enter the price of the item: "))
+            prices.append(price)
+            continue_order = input("Would you like to order something else? Please Enter 'Yes' or 'No'. ")
+            if continue_order.capitalize() == "Yes":
+                still_a_customer = True
+            elif continue_order.capitalize() == "No":
+                still_a_customer = False
+            else:
+                print("Please enter 'Yes' or 'No' only.")
+                still_a_customer = True
         elif customer_answer == 0:
             farewell()
             break
@@ -78,9 +120,12 @@ def boba_ordering():
         print(total_order)
 
     for price in prices:
-        customer_total = float(customer_total) + float(price)
+        customer_subtotal = float(customer_subtotal) + float(price)
 
-    print(f"The total comes out to: ${customer_total:.2f}")
+    customer_tax = customer_subtotal * float(0.0625)
+    customer_total = customer_tax + customer_subtotal
+
+    print(f"The total comes out to: ${customer_total:.2f} after tax.")
     print("")
     farewell()
 
